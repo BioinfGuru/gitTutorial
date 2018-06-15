@@ -1,0 +1,101 @@
+From: https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line
+
+# install
+sudo apt-get install git-all
+
+# set + check identity
+git config --global user.name 'your full name'
+git config --global user.email 'your email address'
+git config --list
+
+# help
+git help clone 		# long version
+git clone -h 		# abbreviate
+
+# Easiest way to set up a repo with remote tracking:
+cd into parent folder --> git clone <ssh>
+
+# create repo
+cd path/to/workingdirectory
+git init
+
+# updating a repo (after you make changes to the files)
+git add .				# don't use '*' # also, if relocating a file, the output of git status should say 'R oldlocation/file -> newlocation/file'
+git status -s 			# any red that you need green? run git add again
+git diff --staged 		# see exactly what will change when you commit (verbose)
+git commit -m 'meaningful message'
+git rm --cached file1	# to remove a file from git tracking without deleting it
+git rm file1			# to remove a file from git tracking + delete it
+git mv oldname newname	# to rename files
+
+# to veiw commit history
+git log --oneline 		# lists commits made
+git log -p 				# adds detailed description of changes
+git log -p -2 			# shows only last 2 commits
+git log --stat 			# adds graph showing amount of change in each file
+git log -S 'string' 	# shows only commits that change 'string'
+
+# redo the previous commit
+git commit --amend -m 'meaningful message'
+
+# unstage a file (undo "add")
+git reset file
+
+# return to previous commit
+git reset --hard <hash> 	# careful, you will lose all changes not commited - 
+
+# remotes
+git remote -v						# to get the repository URLs of your remotes
+git fetch -all						# updates info about tracked remotes (see link section 3.5)
+git remote show <remote>			# display info about a remote
+git remote rename <old> <new> 		# renames a repo (all branches) - easier on github
+git remote remove <remote> 			# delete a remote (from local list of remotes)
+git remote add <remote> <ssh>		# adds a remote (to local list of remotes)
+git clone <ssh>						# pulls a repo + calls it 'origin/master'
+
+# branching
+Important: After making changes to a branch directory tree (e.g. relocating files, deleting adding folders etc), close all files before adding and commiting to remove the environment lock on the files otherwise when you switch branches, the directory tree wont change in the GUI
+git log --oneline --decorate --graph --all # shows all local branches + pointers, 'q' to quit
+git branch -vv						# to see all branches + remotes they track [blue] + last commit
+git branch <branch> 				# creates new branch (avoid naming folders and branches the same)
+git checkout <branch> 				# switches to a branch
+git merge <branch> 					# merges a branch with the current branch
+git branch --no-merged 				# to view branches not merged with current branch
+git branch --merged 				# to view branches merged with current branch
+git branch -d <branch> 				# deletes a branch locally
+
+# remotes + branching
+git push <remote> <branch> 					# pushes checkedout branch to remote/branch (or creates remote/branch if it doesn't exist) 
+git branch -u <remote>/<branch> 			# sets up checkedout branch to track remote/branch # switch -u for --unset-upstream to undo
+git checkout --track <remote>/<branch> 		# creates local <branch> --> switches to local <branch> --> pulls and tracks <remote/branch>
+git pull <remote> <branch>					# pulls + merges from remote
+git push <remote> --delete <branch> 		# deletes a branch from the remote (recoverable for a short time)
+
+# resolving conflicts (https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
+git status 							# view conflicts
+with mergetool:
+	git mergetool 						# resolve conflicts 1 by 1
+	git add . 							# add all files including '.orig'
+	git commit 							# to finish the merge --> now delete '.orig' files --> add --> amend commit
+without mergetool:
+	git checkout --theirs <file> 		# --theirs keeps remote version, --ours keeps local version --> add + commit 
+
+##########
+# GITHUB #
+##########
+
+# add a repo
+first create a new repo on your own comp
+login to git hub and get an SSH key
+click add new repository from drop down menu in upper right corner
+follow instructions
+click ssh
+copy commands in 'push an existing repo'
+git remote add origin git@github.com:roonysgalbi/tisSpec.git
+
+# add a collaborator
+repo --> settings --> collaborators --> add
+this gives thow people commit access (they can write to your repo)
+
+# pull requests
+https://yangsu.github.io/pull-request-tutorial/
