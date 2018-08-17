@@ -69,7 +69,7 @@ git push <remote> <branch> 					# pushes checkedout branch to remote/branch (or 
 git branch -u <remote>/<branch> 			# sets up checkedout branch to track remote/branch # switch -u for --unset-upstream to undo
 git checkout --track <remote>/<branch> 		# creates local <branch> --> switches to local <branch> --> pulls and tracks <remote/branch>
 git pull <remote> <branch>					# pulls + merges from remote
-git push <remote> --delete <branch> 		# deletes a branch from the remote (recoverable for a short time)
+git push --delete <remote> <branch> 		# deletes a branch from the remote (recoverable for a short time)
 
 # resolving conflicts (https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
 git status 							# view conflicts
