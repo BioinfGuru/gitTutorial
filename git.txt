@@ -47,7 +47,10 @@ git status									# to view the status of the repo, see any red that you need g
 git diff									# details of unstaged changes
 git diff --staged 							# details of staged changes (i.e. what will change when you commit)
 git commit -m 'meaningful message'			# commits staged changes (always check 'git status' or 'git diff --staged' before committing)
-git commit --amend -m 'meaningful message'	# amend previous commit, useful if you forgot to stage some of the changes
+git commit --amend -m 'meaningful message'	# amend previous commit 
+											# Warning: don't use --amend if you’ve already pushed the last commit
+											# Fix: If you do make that mistake a forced push should resolve it 'git push -f'
+											# https://stackoverflow.com/questions/18588974/git-prevents-pushing-after-amending-a-commit
 git mv oldname newname						# to rename files
 git rm <filename>							# untrack <filename> + delete from working directory
 git rm --cached <filename>					# untrack <filename> + DON'T delete from working directory
