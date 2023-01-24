@@ -36,11 +36,10 @@ cd repositoryname
 git status -v								# instead of origin/master you get the more informative repositoryname/master
 git remote show repositoryname 				# you can see the remote and local copies are the same
 
-##################
-# Updating repos #
-##################
+#######################
+# Updating local repo #
+#######################
 ## REMEMBER: 	Edit Locally Not Remotely (editing the remote and then merging to local, is like editing a backup file - not smart!)
-				Most common sequence of commands when updating: status --> add --> status --> commit --> status --> push --> fetch --> remote show
 git add <filename>							# stages <filename>, and (if untracked) begins tracking <filename>
 git add .									# stages new/modified files only + ignores deleted files. (NB: don't use '*', it causes file globbing)
 											# if relocating a file, git status should output 'R oldlocation/file -> newlocation/file'
@@ -136,6 +135,7 @@ Notes:		ORIGIN is not special, it is just the default name given by 'git clone' 
 			'origin ' is the default name Git gives to the online repository you cloned from
 			don't use git pull: https://longair.net/blog/2009/04/16/git-fetch-and-merge/)
 			git fetch/merge explained: https://www.toolsqa.com/git/git-fetch/
+			Most common sequence of commands when updating remote: status --> add --> status --> commit --> status --> push --> remote show
 
 git remote -v													# view your remotes and their repository URLs
 git fetch <remotename>											# gets metadata of <remotename>, updates tracking branches
@@ -171,24 +171,4 @@ https://panjeh.medium.com/cleaning-up-git-github-repository-without-deleting-git
 You will want git to ignore some files and not even show them as untracked (e.g. log files, temp files, system files).
 Create a .gitignore file in each repo that stores a list of filename patterns to ignore
 See: 	https://www.atlassian.com/git/tutorials/saving-changes/gitignore
-	https://www.toptal.com/developers/gitignore
-
-##########
-# GITHUB #
-##########
-
-# add a repo
-first create a new repo on your own comp
-login to git hub and get an SSH key
-click add new repository from drop down menu in upper right corner
-follow instructions
-click ssh
-copy commands in 'push an existing repo'
-git remote add origin git@github.com:roonysgalbi/tisSpec.git
-
-# add a collaborator
-repo --> settings --> collaborators --> add
-this gives thow people commit access (they can write to your repo)
-
-# pull requests
-https://yangsu.github.io/pull-request-tutorial/
+		https://www.toptal.com/developers/gitignore
