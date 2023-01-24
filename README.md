@@ -11,3 +11,7 @@ These are the basic instructions for setting your first repo. To learn more abou
 * cd into the cloned directory
 * git remote -v
 
+SSH URL format:
+git@github.com:<user>/<project_name>
+EXAMPLE:
+git@github.com:BioinfGuru/rshiny.git
