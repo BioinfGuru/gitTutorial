@@ -20,14 +20,17 @@ Example: git help clone
 
 # Obtain a Git controlled repository (repo) in one of two ways (both result in a repo on your local machine, ready for work)
 1) Take a local directory that is currently not under version control, and turn it into a repo with remote tracking
-cd into project directory
+cd into the directory that will contain the repository directory
 git init
 git add <test.txt> 				# just create a non-empty text file called test.txt to start 
 git commit -m 'Initial project version' 	# this is a comment to inform you later what this commit did
 
-2) Clone an existing repo from elsewhere
-cd /home/user/my_project
-git clone <url> or git clone <ssh>
+2) Clone an existing repo (e.g. from github via SSH)
+cd into the directory that will contain the repository directory
+git clone git@github.com:gitusername/repositoryname.git --origin repositoryname # creates folder repositoryname
+mv repositoryname/ repositoryname_repo 						# renamed so you know when editing the folder that it is a repository
+cd repositoryname
+git status -v									# instead of origin/master you get repositoryname/master
 
 ##################
 # Updating repos #
@@ -125,7 +128,7 @@ without mergetool:
 # Remotes #
 ###########
 
-Notes: 	ORIGIN is not special, it is just the default name given by 'git clone' to a remote repo
+Notes: 	ORIGIN is not special, it is just the default name given by 'git clone' to a remote repo, I use 
 	'origin ' is the default name Git gives to the online repository you cloned from
 	don't use git pull: https://longair.net/blog/2009/04/16/git-fetch-and-merge/)
 	git fetch/merge explained: https://www.toolsqa.com/git/git-fetch/
