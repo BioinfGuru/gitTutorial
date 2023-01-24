@@ -20,10 +20,13 @@ Example: git help clone
 
 # Obtain a Git controlled repository (repo) in one of two ways (both result in a repo on your local machine, ready for work)
 1) Take a local directory that is currently not under version control, and turn it into a repo with remote tracking
-cd into the directory that will contain the repository directory
-git init
-git add <test.txt> 							# just create a non-empty text file called test.txt to start 
-git commit -m 'Initial project version' 	# this is a comment to inform you later what this commit did
+mkdir repositoryname_repo 					# if new directory 
+or mv repositoryname/ repositoryname_repo	# if existing directory
+cd repositoryname_repo
+git init 									# creates .git folder
+git add .		 							# stages new files
+git commit -m 'Initial project version' 	# commit staged files
+git status -v
 
 2) Clone an existing repo (e.g. from github via SSH)
 cd into the directory that will contain the repository directory
@@ -31,11 +34,13 @@ git clone git@github.com:gitusername/repositoryname.git --origin repositoryname 
 mv repositoryname/ repositoryname_repo 		# renamed so you know when editing the folder that it is a repository
 cd repositoryname
 git status -v								# instead of origin/master you get the more informative repositoryname/master
+git remote show repositoryname 				# you can see the remote and local copies are the same
 
 ##################
 # Updating repos #
 ##################
-## REMEMBER THIS CONCEPT: 	Edit Locally Not Remotely (editing the remote and then pulling, is like editing a backup file - not smart!)
+## REMEMBER: 	Edit Locally Not Remotely (editing the remote and then merging to local, is like editing a backup file - not smart!)
+				Most common sequence of commands when updating: status --> add --> status --> commit --> status --> push --> fetch --> remote show
 git add <filename>							# stages <filename>, and (if untracked) begins tracking <filename>
 git add .									# stages new/modified files only + ignores deleted files. (NB: don't use '*', it causes file globbing)
 											# if relocating a file, git status should output 'R oldlocation/file -> newlocation/file'
