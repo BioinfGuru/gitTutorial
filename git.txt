@@ -1,5 +1,9 @@
 From: https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line
 
+###################
+# Getting started #
+###################
+
 # install
 sudo apt-get install git-all
 
@@ -9,76 +13,158 @@ git config --global user.email 'your email address'
 git config --list
 
 # help
-git help clone 		# long version
-git clone -h 		# abbreviate
+git help <verb>				# detailed output
+git <verb> - h				# concise output
+man git <verb>
+Example: git help clone
 
-# Easiest way to set up a repo with remote tracking:
-cd into parent folder --> git clone <ssh>
-
-# create repo
-cd path/to/workingdirectory
+# Obtain a Git controlled repository (repo) in one of two ways (both result in a repo on your local machine, ready for work)
+1) Take a local directory that is currently not under version control, and turn it into a repo with remote tracking
+cd into project directory
 git init
+git add <test.txt> 				# just create a non-empty text file called test.txt to start 
+git commit -m 'Initial project version' 	# this is a comment to inform you later what this commit did
+
+2) Clone an existing repo from elsewhere
+cd /home/user/my_project
+git clone <url> or git clone <ssh>
+
+##################
+# Updating repos #
+##################
 
 # updating a repo (after you make changes to the files)
-git add .				# don't use '*' # also, if relocating a file, the output of git status should say 'R oldlocation/file -> newlocation/file'
-git status -s 			# any red that you need green? run git add again
-git diff --staged 		# see exactly what will change when you commit (verbose)
-git commit -m 'meaningful message'
-git rm --cached file1	# to remove a file from git tracking without deleting it
-git rm file1			# to remove a file from git tracking + delete it
-git mv oldname newname	# to rename files
+git add <filename>				# stages <filename>, and (if untracked) begins tracking <filename>
+git add .					# stages new/modified files only + ignores deleted files. (NB: don't use '*', it causes file globbing)
+						# if relocating a file, git status should output 'R oldlocation/file -> newlocation/file'
+git status					# to view the status of the repo, see any red that you need green? run git add again
+git diff					# details of unstaged changes
+git diff --staged 				# details of staged changes (i.e. what will change when you commit)
+git commit -m 'meaningful message'		# commits staged changes (always check 'git status' or 'git diff --staged' before committing)
+git commit --amend -m 'meaningful message'	# amend previous commit, useful if you forgot to stage some of the changes
+git mv oldname newname				# to rename files
+git rm <filename>				# untrack <filename> + delete from working directory
+git rm --cached <filename>			# untrack <filename> + DON'T delete from working directory
+NB: If you accidently delete from working directory with 'rm <filename>', it will still be tracked by git so either:
+	- 'git rm <filename>' then commit to make permanent or
+	- return to previous commit (see below)
 
-# to veiw commit history
-git log --oneline 		# lists commits made
-git log -p 				# adds detailed description of changes
-git log -p -2 			# shows only last 2 commits
-git log --stat 			# adds graph showing amount of change in each file
-git log -S 'string' 	# shows only commits that change 'string'
+# to veiw commit history (https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History)
+git log --oneline 				# lists commits made
+git log -p 					# adds detailed description of changes
+git log-p -2 					# shows only last 2 commits
+git log --stat 					# adds graph showing amount of change in each file
 
-# redo the previous commit
-git commit --amend -m 'meaningful message'
+################
+# Undo Changes #
+################
 
-# unstage a file (undo "add")
-git reset file
+See: https://blog.git-init.com/how-to-undo-changes-in-git-using-reset-revert-and-restore/
+git restore <file>				# discard modifications to <filename>, file reverts to previous commit
+git restore --staged <file>			# unstage <filename> (undo 'git add <filename>')
+git reset <filename> 				# unstage <filename> (undo 'git add <filename>')
+git reset --hard <hash> 			# return repo to previous commit, careful, you will lose all changes not commited
 
-# return to previous commit
-git reset --hard <hash> 	# careful, you will lose all changes not commited - 
+################################
+# Short Status (git status -s) #
+################################
 
-# remotes
-git remote -v						# to get the repository URLs of your remotes
-git fetch -all						# updates info about tracked remotes (see link section 3.5)
-git remote show <remote>			# display info about a remote
-git remote rename <old> <new> 		# renames a repo (all branches) - easier on github
-git remote remove <remote> 			# delete a remote (from local list of remotes)
-git remote add <remote> <ssh>		# adds a remote (to local list of remotes)
-git clone <ssh>						# pulls a repo + calls it 'origin/master'
+using the -s (or --short) flag produces more consice git status output showing 3 columns
+column 1: staged status
+column 2: working tree status
+column 3: filename
+Example:	?? file1 = new untracked file
+		A_ file2 = staged new file
+		_M file3 = modified + unstaged
+		M_ file4 = modified + staged
+		MM file1 = indicates earlier modifications are staged, and latter modifications are unstaged
 
-# branching
-Important: After making changes to a branch directory tree (e.g. relocating files, deleting adding folders etc), close all files before adding and commiting to remove the environment lock on the files otherwise when you switch branches, the directory tree wont change in the GUI
-git log --oneline --decorate --graph --all # shows all local branches + pointers, 'q' to quit
+#############
+# Branching #
+#############
+
+For more detail: 	https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell
+Important: 		After making changes to a branch directory tree (e.g. relocating files, deleting adding folders etc)...
+			Close all files before adding and commiting to remove the environment lock on the files...
+			Otherwise when you switch branches, the directory tree wont change in the GUI
+NOTE: 	HEAD is a pointer that points at the current branch you are working on, you move it when you use switch
+	MASTER is not special, it is just a name given by 'git init' when a repo is created/cloned
+	Switch is the new version of checkout
+
+git log --oneline --decorate --graph --all 		# shows all local branches + pointers, 'q' to quit
 git branch -vv						# to see all branches + remotes they track [blue] + last commit
-git branch <branch> 				# creates new branch (avoid naming folders and branches the same)
-git checkout <branch> 				# switches to a branch
-git merge <branch> 					# merges a branch with the current branch
-git branch --no-merged 				# to view branches not merged with current branch
-git branch --merged 				# to view branches merged with current branch
-git branch -d <branch> 				# deletes a branch locally
+git switch --create <branchname>			# creates + switches to <branchname> (avoid naming folders and branches the same)		
+git switch <branchname> 				# switches to <branchname>
+git switch -						# return to previous branch
+git merge <branchname> 					# merge <branchname> into current branch (if no conflicts, <branchname> can be deleted)
+git branch --delete <branchname> 			# deletes a branch locally (e.g. after you merge, the merged branch is no longer needed)
+git branch --no-merged 					# to view branches not merged with current branch
+git branch --merged 					# to view branches merged with current branch (...that can be deleted)
+git branch --move <oldbranchname> <newbranchname>	# change branch name locally (see remote section to then push to remote)
+							WARNING: NEVER change the name of the main branch
 
-# remotes + branching
-git push <remote> <branch> 					# pushes checkedout branch to remote/branch (or creates remote/branch if it doesn't exist) 
-git branch -u <remote>/<branch> 			# sets up checkedout branch to track remote/branch # switch -u for --unset-upstream to undo
-git checkout --track <remote>/<branch> 		# creates local <branch> --> switches to local <branch> --> pulls and tracks <remote/branch>
-git pull <remote> <branch>					# pulls + merges from remote
-git push --delete <remote> <branch> 		# deletes a branch from the remote (recoverable for a short time)
+#######################
+# Resolving conflicts #
+#######################
 
-# resolving conflicts (https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
-git status 							# view conflicts
+You can't switch branches if your working directory or staging area has uncommitted changes that conflict with the branch you’re trying to switch to
+See: https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
+Consider GitKraken: https://www.gitkraken.com/blog/merge-conflict-tool
+
+git status 						# view conflicts
 with mergetool:
-	git mergetool 						# resolve conflicts 1 by 1
-	git add . 							# add all files including '.orig'
-	git commit 							# to finish the merge --> now delete '.orig' files --> add --> amend commit
+	git mergetool 					# resolve conflicts 1 by 1 (creates .orig file)
+	git status					# check conflicts are resolved
+	git add . 					# add all files including '.orig'
+	git commit 					# to finish the merge --> now delete '.orig' files --> add --> amend commit
 without mergetool:
-	git checkout --theirs <file> 		# --theirs keeps remote version, --ours keeps local version --> add + commit 
+	git checkout --theirs <file> 			# --theirs keeps remote version, --ours keeps local version --> add + commit
+
+
+###########
+# Remotes #
+###########
+
+Notes: 	ORIGIN is not special, it is just the default name given by 'git clone' to a remote repo
+	'origin ' is the default name Git gives to the online repository you cloned from
+	don't use git pull: https://longair.net/blog/2009/04/16/git-fetch-and-merge/)
+	git fetch/merge explained: https://www.toolsqa.com/git/git-fetch/
+
+git remote -v						# view your remotes and their repository URLs
+git fetch <remotename>					# gets metadata of <remotename>, updates tracking branches
+git fetch --all						# gets metadata of all tracked remotes, updates tracking branches
+git remote show <remotename>				# display metadata of <remotename>
+git remote rename <old> <new> 				# renames a remote repo - easier on github
+git remote remove <remotename> 				# delete a remote (from local list of remotes)
+git remote add <remotename> <ssh>			# using ssh key, adds a remote (to local list of remotes)
+git remote add <remotename> <url> 			# using https, adds a remote (to local list of remotes)
+git clone <ssh>	--origin <remotename>			# pulls a repo + calls it '<remotename>/master' instead of the default 'origin/master'
+git push <remotename> <branchname> 			# pushes checkedout branch to remote/branch (or creates remote/branch if it doesn't exist) 
+git branch -u <remotename>/<branchname> 		# current branch to track remote/branch # switch -u for --unset-upstream to undo
+git switch -c <branchname> --track <remotename>/<branchname>  	# creates + switches to local <branchname> that tracks <remotename>/<branchname>
+git pull <remotename> <branchname>			# pulls + merges from remote (better to use fetch/merge)
+git push --set-upstream <remotename> <newbranchname>	# push <newbranchname> to <remotename>, next you should delete <oldbranchname> from remote
+							WARNING: NEVER change the name of the main branch
+git push --delete <remotename> <oldbranchname> 		# delete <branchname> from remote (recoverable for a short time)
+or
+git push <remotename> --delete <branchname>
+
+###################
+# Cleaning repos! #
+###################
+
+https://travisjeffery.com/b/2011/12/keeping-your-git-repo-clean-of-orig-files/
+https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-to-use-the-git-clean-command
+https://panjeh.medium.com/cleaning-up-git-github-repository-without-deleting-git-directory-c86b7415b51b
+
+##################
+# Ignoring files #
+##################
+
+You will want git to ignore some files and not even show them as untracked (e.g. log files, temp files, system files).
+Create a .gitignore file in each repo that stores a list of filename patterns to ignore
+See: 	https://www.atlassian.com/git/tutorials/saving-changes/gitignore
+	https://www.toptal.com/developers/gitignore
 
 ##########
 # GITHUB #
