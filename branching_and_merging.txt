@@ -1,0 +1,69 @@
+From experience, you will probably know it is entirly possibly to screw up your code and have no idea how to unscrew it. This is the power of GIT. Branching allows you to switch to a branch (copy) of your project, while retaining the MASTER branch. This allows you to develop a new feature or fix without messing up the master branch. Best practice encourages short lived branches with small changes that are quickly merged back to the master branch. For more detail: https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell
+
+REMEMBER: 	
+			- NEVER change the name of the MASTER branch. While the word MASTER is not special, it is just a name given by 'git init' when a repo is created (sometimes you might see MAIN or DEFAULT). Changing the word really screws up the repo history (just take a look at the history of this repo for proof!)
+			- HEAD refers to a pointer that points at the current branch you are working on, you move it when you use 'git switch' (the new version of 'git checkout')
+			- Don't name a branch and a folder the same
+
+#####################
+# Creating a branch #
+#####################
+
+# Lets set up a branchtest_repo to play around with branches
+mkdir branchtest_repo && cd branchtest_repo
+git init
+touch test.txt && echo "First Line:	This is the master branch" >>test.txt
+git add . && git commit -m 'initial commit' && git status -s
+
+# Now view all branches and then create + switch to a new branch, and view again. See the difference?
+git branch -vv
+git switch --create branchname					
+git branch -vv
+
+# Now edit the test.txt file and commit
+touch test.txt && echo "Second Line:	This is my_first_branch" >>test.txt
+git add . && git commit -m 'Added a second line'
+git status -s
+
+# Now compare the test.txt file of both branches, can you explain what happened?
+cat test.txt
+git switch -	# return to previous branch
+cat test.txt
+
+So now you have created a branch, modified a file, and committed the modification. Then when you switched between branches, each branch conserves the files in the state they were in when that branch was last commited. It is like turning back the clock!
+
+####################
+# Pushing branches #
+####################
+
+git push -u origin branchname 					
+
+This command pushes branchname to remote. The '-u' flag tells git to associate local branch with remote branch (i.e. for tracking) so that 'git pull' will pull all branches and not just MASTER
+
+####################
+# Merging a branch #
+####################
+
+# Remember: Always check the remote master for new commits before pushing anything
+git switch master
+git pull origin master
+
+# Next, while switched to master, merge any branches not merged with master
+git branch --no-merged										# view branches not merged with current branch
+git merge branchname 										# merge branchname into current branch
+git branch --merged 										# to view branches merged with current branch
+
+# Finally, push to remote
+git push origin master
+
+# Merged branches should always be deleted locally and on the remote
+git branch --delete branchname
+git push origin --delete branchname
+
+###########################
+# Other relevent commands #
+###########################
+
+git log --oneline --decorate --graph --all 					# shows all local branches + pointers
+git branch --move oldbranchname newbranchname				# change branchname locally
+

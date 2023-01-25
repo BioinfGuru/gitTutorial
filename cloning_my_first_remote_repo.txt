@@ -26,6 +26,7 @@ git push <remotename> <branchname> 								# if no conflicts
 ###########################
 
 git remote -v													# view your remotes and their repository URLs
+git pull                                                        # pulls all branches from remote and tries to merge
 git fetch <remotename>											# gets metadata of <remotename>, updates tracking branches
 git fetch --all													# gets metadata of all tracked remotes, updates tracking branches
 git remote show <remotename>									# display metadata of <remotename>
@@ -38,7 +39,7 @@ git push <remotename> <branchname> 								# pushes checkedout branch to remote/
 git branch -u <remotename>/<branchname> 						# current branch to track remote/branch # switch -u for --unset-upstream to undo
 git switch -c <branchname> --track <remotename>/<branchname>  	# creates + switches to local <branchname> that tracks <remotename>/<branchname>
 git pull <remotename> <branchname>								# pulls + merges from remote (better to use fetch/merge)
-git push --set-upstream <remotename> <newbranchname>			# push <newbranchname> to <remotename>, next you should delete <oldbranchname> from remote
+git push -u <remotename> <newbranchname>			            # push <newbranchname> to <remotename>, -u sets up tracking, next you should delete <oldbranchname> from remote
 																WARNING: NEVER change the name of the main branch
 git push --delete <remotename> <oldbranchname> 					# delete <branchname> from remote (recoverable for a short time)
 or
