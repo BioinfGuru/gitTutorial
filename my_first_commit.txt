@@ -1,0 +1,57 @@
+So now GIT is set up, lets use it!
+
+Under-the-hood, GIT tracks 3 'areas'. These are:
+1) The working directory - where the development is happening and files are created or modified
+2) The staging area - where modified files are waiting for commit
+3) The .git directory (the repo) - where commits are tracked
+
+#################
+# How to commit #
+#################
+
+# First add new/modified files to the staging area
+git status	 								# notice new files are untracked and modified files are unstaged
+git add .									# stages all new or modified files only + ignores deleted files. (NB: don't use '*')
+											# if relocating a file, git status should output 'R oldlocation/file -> newlocation/file'
+got status	 								# notice new/modified files are now ready (staged and tracked) to be committed
+
+# Now the files have been staged, they can be commited (but check status first so you know what you are commiting)
+git commit -m 'meaningful description'		# Add an informative verbose 'meaningful description' of the modifications to be committed
+
+##########################
+# Veiw commit history #
+##########################
+# See: https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
+
+git log --oneline 							# lists commits made
+git log -p 									# adds detailed description of changes
+git log-p -2 								# shows only last 2 commits
+git log --stat 								# adds graph showing amount of change in each file
+
+################
+# Undo Changes #
+################
+See: https://blog.git-init.com/how-to-undo-changes-in-git-using-reset-revert-and-restore/
+
+git restore <file>							# discard modifications to filename, file reverts to previous commit
+git restore --staged <file>					# unstage filename (undo 'git add filename')
+git reset filename 							# unstage filename (undo 'git add filename')
+git reset --hard <hash> 					# return repo to previous commit, careful, you will lose all changes not commited
+ 	- If you accidently delete from working directory with 'rm filename', it will still be tracked by git so either:
+	- 'git rm filename' then commit to make permanent or
+	- return to previous commit
+
+###########################
+# Other relevent commands #
+###########################
+
+git add filename							# stages filename, and tracks if new
+git diff									# details of unstaged changes
+git diff --staged 							# details of staged changes (i.e. what will change when you commit)
+git commit --amend -m 'meaningful message'	# amend previous commit 
+											# Warning: don't use --amend if you’ve already pushed the last commit
+											# Fix: If you do make that mistake a forced push should resolve it 'git push -f'
+											# https://stackoverflow.com/questions/18588974/git-prevents-pushing-after-amending-a-commit
+git mv oldname newname						# to rename files
+git rm filename								# untrack filename + delete from working directory
+git rm --cached filename					# untrack filename + DON'T delete from working directory

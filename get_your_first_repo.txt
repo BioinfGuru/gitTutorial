@@ -1,0 +1,34 @@
+To use GIT for any project you are inteseted in, depends on where the project of interest is: 
+1) Local: 	Projects that are on your machine
+			For these, you initialize (create) the repo on your machine
+2) Remote: 	Projects that already exist as a git repository online
+			For these, you clone (download) the online repo to your machine
+
+Both scenarios result in a project with a repo folder (project/.git/) on your local machine that is:
+ - ready for development
+ - under version control
+ - tracked
+
+To get started, we will initialize a local repo but later in remotes.txt you will learn how to clone a repo
+
+#############################
+# Initializing a local repo #
+#############################
+
+# I prefer to add the suffix '_repo' to the top folder of my project so I don't forget the project is under GIT version control
+mkdir projectname_repo 						# if new directory
+	(or mv projectname/ projectname_repo	# if existing directory)
+cd projectname_repo
+git init 												# creates .git folder
+git add .		 										# stages new files
+git commit -m 'Initial project version' 				# commit staged files
+git status -v 											# view status of the repo
+
+######################
+# Take a look inside #
+######################
+cd projectname_repo
+du -hs .git 			# view .git folder disk usage
+tree .git 				# view .git folder contents as a tree
+
+Now notice the tree structure and files inside the .git folder, and how little storage it uses! This is the working brain of git. It stores all the info for tracking and version control. If you ever want to stop using GIT for this project, you just have to delete the .git folder.

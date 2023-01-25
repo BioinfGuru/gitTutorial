@@ -1,0 +1,63 @@
+
+################################
+# Short Status (git status -s) #
+################################
+
+using the -s (or --short) flag produces more consice git status output showing 3 columns
+column 1: staged status
+column 2: working tree status
+column 3: filename
+Example:	?? file1 = new untracked file
+			A_ file2 = staged new file
+			_M file3 = modified + unstaged
+			M_ file4 = modified + staged
+			MM file1 = indicates earlier modifications are staged, and latter modifications are unstaged
+
+#############
+# Branching #
+#############
+
+For more detail: 	https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell
+Important: 			After making changes to a branch directory tree (e.g. relocating files, deleting adding folders etc)...
+					Close all files before adding and commiting to remove the environment lock on the files...
+					Otherwise when you switch branches, the directory tree wont change in the GUI
+NOTE: 				HEAD is a pointer that points at the current branch you are working on, you move it when you use switch
+					MASTER is not special, it is just a name given by 'git init' when a repo is created/cloned
+					Switch is the new version of checkout
+
+git log --oneline --decorate --graph --all 			# shows all local branches + pointers, 'q' to quit
+git branch -vv										# to see all branches + remotes they track [blue] + last commit
+git switch --create <branchname>					# creates + switches to <branchname> (avoid naming folders and branches the same)		
+git switch <branchname> 							# switches to <branchname>
+git switch -										# return to previous branch
+git merge <branchname> 								# merge <branchname> into current branch (if no conflicts, <branchname> can be deleted)
+git branch --delete <branchname> 					# deletes a branch locally (e.g. after you merge, the merged branch is no longer needed)
+git branch --no-merged 								# to view branches not merged with current branch
+git branch --merged 								# to view branches merged with current branch (...that can be deleted)
+git branch --move <oldbranchname> <newbranchname>	# change branch name locally (see remote section to then push to remote)
+							WARNING: NEVER change the name of the main branch
+
+#######################
+# Resolving conflicts #
+#######################
+
+You can't switch branches if your working directory or staging area has uncommitted changes that conflict with the branch you’re trying to switch to
+See: https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
+Consider GitKraken: https://www.gitkraken.com/blog/merge-conflict-tool
+
+git status 									# view conflicts
+with mergetool:
+	git mergetool 							# resolve conflicts 1 by 1 (creates .orig file)
+	git status								# check conflicts are resolved
+	git add . 								# add all files including '.orig'
+	git commit 								# to finish the merge --> now delete '.orig' files --> add --> amend commit
+without mergetool:
+	git checkout --theirs <file> 			# --theirs keeps remote version, --ours keeps local version --> add + commit
+
+###################
+# Cleaning repos! #
+###################
+
+https://travisjeffery.com/b/2011/12/keeping-your-git-repo-clean-of-orig-files/
+https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-to-use-the-git-clean-command
+https://panjeh.medium.com/cleaning-up-git-github-repository-without-deleting-git-directory-c86b7415b51b

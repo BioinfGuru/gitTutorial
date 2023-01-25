@@ -1,0 +1,21 @@
+During development there will be some files like that:
+1) you won't want others to see
+2) may make your repo look messy
+3) are just part of your personal preferences setup
+4) are just not part of the code of the project. 
+
+For example: 	.log files
+				.temp files
+
+So before you go any further, lets set up a simple hidden file that tells GIT the files it should ignore.
+
+cd projectname_repo
+touch .gitignore
+echo -e "# ignore all log files\n*.log\n\n# ignore all temp files\n*.temp\n" > .gitignore
+cat .gitignore
+
+So that is the file created, and now GIT will ignore all log and temp files. As you gain experience, you will add more. For guidance and common additions to .gitignore see:
+
+https://www.atlassian.com/git/tutorials/saving-changes/gitignore
+https://www.toptal.com/developers/gitignore
+
