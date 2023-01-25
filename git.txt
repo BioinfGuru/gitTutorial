@@ -8,8 +8,8 @@ From: https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line
 sudo apt-get install git-all
 
 # set + check identity
-git config --global user.name 'your full name'
-git config --global user.email 'your email address'
+git config --global user.name 'your full name' 		# need not match github
+git config --global user.email 'your email address' # must match github
 git config --list
 
 # help
@@ -40,8 +40,8 @@ git remote show repositoryname 				# you can see the remote and local copies are
 # Updating local repo #
 #######################
 ## REMEMBER: 	Edit Locally Not Remotely (editing the remote and then merging to local, is like editing a backup file - not smart!)
-git add <filename>							# stages <filename>, and (if untracked) begins tracking <filename>
-git add .									# stages new/modified files only + ignores deleted files. (NB: don't use '*', it causes file globbing)
+git add filename							# stages filename, and tracks if new
+git add .									# stages new/modified files only + ignores deleted files. (NB: don't use '*')
 											# if relocating a file, git status should output 'R oldlocation/file -> newlocation/file'
 git status									# to view the status of the repo, see any red that you need green? run git add again
 git diff									# details of unstaged changes
@@ -52,10 +52,10 @@ git commit --amend -m 'meaningful message'	# amend previous commit
 											# Fix: If you do make that mistake a forced push should resolve it 'git push -f'
 											# https://stackoverflow.com/questions/18588974/git-prevents-pushing-after-amending-a-commit
 git mv oldname newname						# to rename files
-git rm <filename>							# untrack <filename> + delete from working directory
-git rm --cached <filename>					# untrack <filename> + DON'T delete from working directory
-NB: If you accidently delete from working directory with 'rm <filename>', it will still be tracked by git so either:
-	- 'git rm <filename>' then commit to make permanent or
+git rm filename							# untrack filename + delete from working directory
+git rm --cached filename					# untrack filename + DON'T delete from working directory
+NB: If you accidently delete from working directory with 'rm filename', it will still be tracked by git so either:
+	- 'git rm filename' then commit to make permanent or
 	- return to previous commit (see below)
 
 # to veiw commit history (https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History)
@@ -69,9 +69,9 @@ git log --stat 								# adds graph showing amount of change in each file
 ################
 
 See: https://blog.git-init.com/how-to-undo-changes-in-git-using-reset-revert-and-restore/
-git restore <file>							# discard modifications to <filename>, file reverts to previous commit
-git restore --staged <file>					# unstage <filename> (undo 'git add <filename>')
-git reset <filename> 						# unstage <filename> (undo 'git add <filename>')
+git restore <file>							# discard modifications to filename, file reverts to previous commit
+git restore --staged <file>					# unstage filename (undo 'git add filename')
+git reset filename 						# unstage filename (undo 'git add filename')
 git reset --hard <hash> 					# return repo to previous commit, careful, you will lose all changes not commited
 
 ################################
