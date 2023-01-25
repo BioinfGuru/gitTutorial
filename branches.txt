@@ -1,0 +1,32 @@
+From experience, you will probably know it is entirly possibly to screw up your code and have no idea how to unscrew it. This is the power of GIT. Branching allows you to switch to a branch (copy) of your project, while retaining the MASTER branch. Best practice encourages short lived branches with small changes that are quickly merged back to the master branch. This allows you to develop a new feature or fix without messing up the master branch.
+
+WARNING: NEVER change the name of the MASTER branch. While the word MASTER is not special, it is just a name given by 'git init' when a repo is created (sometimes you might see MAIN or DEFAULT). Changing the word really screws up the repo history (just take a look at the history of this repo for proof!)
+
+REMEMBER: 	HEAD refers to a pointer that points at the current branch you are working on, you move it when you use 'git switch' (the new version of 'git checkout')
+
+#####################
+# Creating a branch #
+#####################
+
+# First view all branches, their tracked remotes, and last commit
+git branch -vv
+
+# Then create + switch to a new branch (avoid naming folders and branches the same)
+git switch --create branchname					
+
+# Now try viewing the branches again, notice the difference?
+git branch -vv
+
+git log --oneline --decorate --graph --all 					# shows all local branches + pointers, 'q' to quit
+git branch -vv												# to see all branches + remotes they track [blue] + last commit
+git switch --create branchname								# creates + switches to branchname (avoid naming folders and branches the same)		
+git switch branchname 										# switches to branchname
+git switch -												# return to previous branch
+git merge branchname 										# merge branchname into current branch (if no conflicts, branchname can be deleted)
+git branch --delete branchname 								# deletes a branch locally (e.g. after you merge, the merged branch is no longer needed)
+git branch --no-merged 										# to view branches not merged with current branch
+git branch --merged 										# to view branches merged with current branch (...that can be deleted)
+git branch --move oldbranchname newbranchname				# change branch name locally (see remote section to then push to remote)
+							
+
+For more detail: 	https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell

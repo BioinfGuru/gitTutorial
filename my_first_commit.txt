@@ -1,19 +1,37 @@
 So now GIT is set up, lets use it!
 
-Under-the-hood, GIT tracks 3 'areas'. These are:
-1) The working directory - where the development is happening and files are created or modified
+Under-the-hood, GIT tracks 3 things. These are:
+1) The working tree - where the development is happening and files are created or modified
 2) The staging area - where modified files are waiting for commit
 3) The .git directory (the repo) - where commits are tracked
 
-#################
-# How to commit #
-#################
+##########
+# STATUS #
+##########
+So now you have some files and you have been busy and modified, closed and saved the files. Next you need to let GIT know that it is time to update the repo. You do this by adding the modified files to the staging area and then committing the modifications to the repo. But first lets take a look at one of the most common commands you will use
+
+git status -s
+
+Using the -s (or --short) flag produces more consice git status output showing 3 columns:
+column 1: staged are status
+column 2: working tree status
+column 3: filename
+Example:	?? file1 = new untracked file
+			A_ file2 = staged new file
+			_M file3 = modified + unstaged
+			M_ file4 = modified + staged
+			MM file1 = indicates earlier modifications are staged, and latter modifications are unstaged
+
+##########
+# Commit #
+##########
+REMEMBER: after making modifications, close all files before staging and commiting to remove the environment lock on the files. Otherwise, things may not go as expected!
 
 # First add new/modified files to the staging area
-git status	 								# notice new files are untracked and modified files are unstaged
+git status -s								# notice new files are untracked and modified files are unstaged
 git add .									# stages all new or modified files only + ignores deleted files. (NB: don't use '*')
 											# if relocating a file, git status should output 'R oldlocation/file -> newlocation/file'
-got status	 								# notice new/modified files are now ready (staged and tracked) to be committed
+got status -s	 							# notice new/modified files are now ready (staged and tracked) to be committed
 
 # Now the files have been staged, they can be commited (but check status first so you know what you are commiting)
 git commit -m 'meaningful description'		# Add an informative verbose 'meaningful description' of the modifications to be committed
