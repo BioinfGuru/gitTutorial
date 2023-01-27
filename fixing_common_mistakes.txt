@@ -1,0 +1,72 @@
+There are a few ways to undo a mistake in your GIT repository. Some change the repository history (e.g. ammend, reset), which is fine if the repository is only accessed by you, but if other people are pushing to/pulling from the same remote repository it can corrupt their history.
+
+Remember the process: Modify --> Stage --> Commit
+
+##############################################
+# Need to undo modifications before staging? #
+##############################################
+Solution: Switch to another branch, and forcibly remove the modifications since last commit.
+
+git switch --force branchname
+ 
+
+############################
+# Need to change a commit? #
+############################
+Some commands change the commit history (e.g. ammend, reset), which is fine if the repository is only accessed by you, but if other people are pushing to/pulling from the same remote repository it can corrupt their history. When the repo is shared, it is best to use git revert instead (see below).
+
+# Need to change a commit?
+Solution: Overwrite the commit message without creating a new commit
+
+git commit --amend 								# commits any new changes to last commit
+git commit --amend -m 'type correct message'	# changes the message of the last commit
+
+##################################
+# Committed to the wrong branch? #
+##################################
+Solution: Cherry pick the commit from the the list of commits, transfer it to the correct branch, and delete it from the old branch
+
+git switch wrong_branch		
+git log 
+copy first 6 characters of hash of the commit you want to move
+git switch right_branch		
+git cherry-pick paste_hash_here
+git log 	# notice the commit is now in this branch
+now delete from wrong_branch (see deleting commits below)
+
+############################
+# Need to delete a commit? #
+############################
+Solution: 	Choose to soft/mixed/hard reset tracked directories/files to a specified commit with hash (deletes all commits since). 
+Soft 			- keeps tracked file modifications in staging area
+Mixed (default) - keeps tracked file modifications in working directory (unstaged)
+Hard 			- deletes all tracked file modifications since
+
+git log 
+copy first 6 characters of hash of the commit you want to reset to
+git reset --[soft|mixed|hard] paste_hash_here
+git clean -df	# optional, deletes untracked directories/files
+
+##############################
+# Need to undo a hard reset? #
+##############################
+Solution: Needs to be done as soon as possible before garbage deletion (git-gc) runs which makes the hard reset unrecoverable. Use reflog to list commit hashes ordered by git command. Restore the commit and save it as a new branch.
+
+git reflog
+copy the hash before the reset
+git switch paste_hash_here 			# creates a 'detatched head' i.e. not in a branch
+git branch newbranchname 			# creates a branch for the restored commit			
+
+###############################################################
+# Need to amend/reset but don't want to affect commit history #
+###############################################################
+Solution: Use revert to create a new commit that reverses the affect of a specified earlier commit. No modifications to earlier commits, so history is protected.
+
+git log
+copy and paste the hash of the commit you want to be reversed
+git revert paste_hash_here
+enter descriptive message
+git log 		# notice extra commit
+
+
+
