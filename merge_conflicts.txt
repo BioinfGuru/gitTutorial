@@ -1,0 +1,31 @@
+#######################
+# Resolving conflicts #
+#######################
+
+Often when merging branches, a conflict occurs that must be resolved before GIT will allow you to merge and commit. A conflict is when the two branches have different edits on the same lines of a file. This can happen when merging 2 local branches, or merging a remote with a local branch. GIT doesn't know which edit should be kept. Resolving the conflict requires comparing the lines with a 'diff tool' and then merging the files with a 'merge tool', and then you can commit. While GIT has its own default tools, but you can set your preference. Personally, I pay for GitKraken because of its diff/merge conflict tool. Your choice is one of 2 broad categories:
+1) line-by-line:	single-pane view with conflicting entries on lines above and below (the GIT default)
+2) side-by-side:	multi-pain view with conflicting files in each pane (more user-friendly), see image below
+
+------------------------------------------
+|             |           |              |
+|   LOCAL     |   BASE    |   REMOTE     |
+|             |           |              |
+------------------------------------------
+|                                        |
+|                MERGED                  |
+|                                        |
+------------------------------------------
+
+See:	https://git-scm.com/docs/git-mergetool
+		https://git-scm.com/docs/vimdiff/en
+
+# Relevent commands:
+git mergetool --tool-help					# Choose from the list of integrated diff/merge tools (some may need installing)
+git status 									# view conflicts
+with mergetool:
+	git mergetool 							# resolve conflicts 1 by 1 (creates .orig file)
+	git status								# check conflicts are resolved
+	git add . 								# add all files including '.orig'
+	git commit 								# to finish the merge --> now delete '.orig' files --> add --> amend commit
+without mergetool:
+	git checkout --theirs filename 			# --theirs keeps remote version, --ours keeps local version --> add + commit

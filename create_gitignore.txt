@@ -11,11 +11,24 @@ So before you go any further, lets set up a simple hidden file that tells GIT th
 
 cd projectname_repo
 touch .gitignore
-echo -e "# ignore all log files\n*.log\n\n# ignore all temp files\n*.temp\n" > .gitignore
+echo -e "# ignore all log files\n*.log\n" > .gitignore
 cat .gitignore
 
-So that is the file created, and now GIT will ignore all log and temp files. As you gain experience, you will add more. For guidance and common additions to .gitignore see:
+So that is the file created, and now GIT will ignore all log files. 
+As you gain experience, you will add more. For guidance and common additions to .gitignore see:
 
 https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 https://www.toptal.com/developers/gitignore
 
+#######################
+# My .gitignore file: #
+#######################
+
+# ignore all log files
+*.log
+
+# ignore all temp files
+*.temp
+
+# ignore all .orig files output from merge tools
+*.orig

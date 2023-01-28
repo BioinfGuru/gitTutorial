@@ -4,3 +4,6 @@
 # ignore all temp files
 *.temp
 
+# ignore all .orig files output from merge tools
+*.orig
+
