@@ -40,13 +40,35 @@ git push -u origin branchname
 
 This command pushes branchname to remote. The '-u' flag tells git to associate local branch with remote branch (i.e. for tracking) so that 'git pull' will pull all branches and not just MASTER
 
+################################
+# Setting up a diff/merge tool #
+################################
+git mergetool --tool-help					# Choose from the list of diff/merge tools (I prefer Gvim)
+Install Gvim from 'Ubuntu Software'
+
+https://www.rosipov.com/blog/use-vimdiff-as-git-mergetool/
+https://medium.com/@angielohqh/git-merging-with-3-way-vimdiff-5c59d9c62268
+https://git-scm.com/docs/vimdiff/en
+https://blog.programster.org/configure-git-to-use-vimdiff
+https://gist.github.com/karenyyng/f19ff75c60f18b4b8149
+https://git-scm.com/docs/git-mergetool
+https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging#_advanced_merging
+
+
+
+
+
+
+
+
+
 ####################
 # Merging a branch #
 ####################
 
-# Remember: Always check the remote master for new commits before pushing anything
-git switch master
-git pull origin master
+# Remember: Always check the remote for new commits before pushing anything
+git switch branchname
+git pull origin branchname
 
 # Next, while switched to master, merge any branches not merged with master
 git branch --no-merged										# view branches not merged with current branch
@@ -54,7 +76,7 @@ git merge branchname 										# merge branchname into current branch
 git branch --merged 										# to view branches merged with current branch
 
 # Finally, push to remote
-git push origin master
+git push remote branchname
 
 # Merged branches should always be deleted locally and on the remote
 git branch --delete branchname
@@ -76,7 +98,6 @@ git stash apply stash_ref		# retrieve a specified stash from stash list
 								# but does not delete the stash from stash list
 git stash drop stash_ref		# delete (forever) a specified stash from stash list
 git stash drop clear			# delete (forever) all stashes in the stash list
-
 
 ###########################
 # Other relevent commands #

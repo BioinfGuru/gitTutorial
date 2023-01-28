@@ -1,10 +1,10 @@
 There are a few ways to undo a mistake in your GIT repository. Some commands change the commit history (e.g. ammend, reset), which is fine if the repository is only accessed by you, but if other people are pushing to/pulling from the same remote repository it can corrupt their history, so it is best to use git revert instead (see below).
 
-Remember the process: Modify (working directory) --> Stage (staging area) --> Commit (saved in .git repo)
+Remember the process: Modify (working directory) --> Stage (staging area) --> Commit (saved in .git repo) --> Merge (optional)
 
-########################################
-# Need to undo unstaged modifications? #
-########################################
+###############################################
+# Need to undo unstaged/staged modifications? #
+###############################################
 Solution: Switch to another branch, and forcibly remove the modifications since last commit.
 
 git switch --force branchname
@@ -12,7 +12,7 @@ git switch --force branchname
 ##########################################################
 # Need to move unstaged modifications to another branch? #
 ##########################################################
-So you have modified the wrong branch! 
+So you have modified the wrong branch!
 Solution: Use git stash to store the modifications, then switch to the correct branch and pop the stash
 See 'stashing branch modifications' in 'branching_and_merging.txt'
 
@@ -71,5 +71,10 @@ git revert paste_hash_here
 enter descriptive message
 git log 		# notice extra commit
 
-
-
+#########################
+# Need to quit a merge? #
+#########################
+Sometimes you start a merge and realise you can't finish it
+Solution: quit the merge, and if you need to, undo the modifications since the last commit
+git merge --quit				# quits the merge
+git switch --force - 			# deletes file modifications since last commit
