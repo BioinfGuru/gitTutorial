@@ -60,6 +60,24 @@ git push origin master
 git branch --delete branchname
 git push origin --delete branchname
 
+#################################
+# Stashing branch modifications #
+#################################
+Sometimes you may be making some modifications and are not ready to commit them but you need to switch branches or temporarily go back to where you started. Git allows you to temporarily store the modifications for you to retrieve later, returning the branch to the last commit before the modifications, so you can go do whatever it is you needed to do. Remember: When retrieving the stash, make sure you are back on the branch you stashed from
+
+
+git stash save "leave a detailed informative message" # creates a stash
+git stash list					# shows your modifications are stored in a stash
+								# notice the stash reference is stash@{0}
+								# previous stashes will have moved down the stash list
+git stash pop					# retrieves the stash, and deletes it from stash list
+								# NB: 	retrieves stash@{0} only
+git stash apply stash_ref		# retrieve a specified stash from stash list
+								# but does not delete the stash from stash list
+git stash drop stash_ref		# delete (forever) a specified stash from stash list
+git stash drop clear			# delete (forever) all stashes in the stash list
+
+
 ###########################
 # Other relevent commands #
 ###########################
