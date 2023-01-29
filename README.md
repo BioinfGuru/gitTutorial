@@ -8,7 +8,11 @@ git verb - h				# concise output
 man git verb
 
 Follow these walkthroughs to start your GIT journey:
-* 1 - [Connecting to GitHub]()
-* 2 - 
+* 1 - [Install and setup GIT](https://github.com/BioinfGuru/gitTutorial/blob/master/Install_and_setup.txt)
+* 2 - [Connect to GitHub](https://github.com/BioinfGuru/gitTutorial/blob/master/connecting_to_github.txt)
+* 3 - [Create a local repository](https://github.com/BioinfGuru/gitTutorial/blob/master/initialising_my_first_local_repo.txt)
+* 4 - [Create a gitignore file](https://github.com/BioinfGuru/gitTutorial/blob/master/create_gitignore.txt)
+* 5 - [Make your first commit](https://github.com/BioinfGuru/gitTutorial/blob/master/my_first_commit.txt)
+* 6 - 
 
 The most useful of GIT commands are included in the attached file [git.txt](https://github.com/roonysgalbi/gitTutorial/blob/master/git.txt)
