@@ -6,3 +6,8 @@ git --version 										# check installation
 git config --global user.name 'your full name' 		# need not match github
 git config --global user.email 'your email address' # must match github
 git config --list									# check name + email
+
+# Getting help with GIT commands (verbs e.g. init, clone, push, pull)
+git help verb
+git verb --help
+man git verb
