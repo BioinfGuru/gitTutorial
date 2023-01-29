@@ -1,13 +1,16 @@
-Earlier you learned how to initialize a new repo locally on your machine, but what about the other scenario of cloning (downloading) a remote (online) repo to your machine? In the following code I am cloning this gitTutorial repo from github using an SSH-URL, but you can also use an HTTPS-URL. This will give me a local copy of the repo on my machine that ready for development, under version control, and tracked. Once I have modified, staged, and committed any changes to files, I can then upload (push) my changes to the remote repo.
+Earlier you learned how to initialize a new repo locally on your machine, but what about the other scenario of cloning (downloading) a remote repository (online copy of a project) to your machine? This gives a local copy of the repo on your machine that is ready for development, under version control, and tracked. Once you have modified, staged, and committed any changes to files, you can then upload (push)to the remote repo.
 
 ##########################
 # Cloning a remote repo #
 #########################
 
-cd to parent folder
-git clone git@github.com:gitusername/projectname.git 	# creates projectname folder containing .git folder and all project files
+On GitHub, go to a repository you want to clone and click the green 'code' button. Under the local tab, copy the HTTPS-URL or the SSH-URL
+Open a terminal
+cd to the folder into which you want to place the cloned repository
+git clone git@github.com:gitusername/projectname.git 	# creates projectname folder via SSH
+    or https://github.com/gitusername/projectname.git   # creates projectname folder via HTTPS (enter username/password as requested)
 mv projectname/ projectname_repo 						# renamed so you know when editing that projectname is under GIT version control
-cd projectname
+cd projectname_repo                                     # enter the repository folder
 git status -v											# view status of the repo
 git remote show projectname 							# you can see the remote and local copies are the same
 
@@ -15,34 +18,31 @@ git remote show projectname 							# you can see the remote and local copies are
 # Push to a remote repo #
 #########################
 Important:
- - It is likely that if this is a collaborative project, that others will have pushed to the remote since you have cloned it. So you should first pull from the repository again so that all changes can be merged and conflicts resolved before pushing back to the repository again. Otherwise, your push may be rejected.
+ - It is likely that if this is a collaborative project, that others will have pushed to the remote since you have cloned it. So you should first pull (or fetch/merge) from the repository again so that all changes can be merged and conflicts resolved before pushing back to the repository again. Otherwise, your push may be rejected.
  - ORIGIN/MASTER is just the default remotename/branchname given by 'git init' (don't change them, everyone understands them)
 
-git pull <remotename> <branchname>								# pulls from remote and tries to merge
-git push <remotename> <branchname> 								# if no conflicts
+git pull remotename branchname								# or use fetch/merge (see below)
+git push remotename branchname 								# if no conflicts
 
 ###########################
 # Other relevent commands #
 ###########################
 
-git remote -v													# view your remotes and their repository URLs
-git pull                                                        # pulls all branches from remote and tries to merge
-git fetch <remotename>											# gets metadata of <remotename>, updates tracking branches
-git fetch --all													# gets metadata of all tracked remotes, updates tracking branches
-git remote show <remotename>									# display metadata of <remotename>
-git remote rename <old> <new> 									# renames a remote repo - easier on github
-git remote remove <remotename> 									# delete a remote (from local list of remotes)
-git remote add <remotename> <ssh>								# using ssh key, adds a remote (to local list of remotes)
-git remote add <remotename> <url> 								# using https, adds a remote (to local list of remotes)
-git clone <ssh>	--origin <remotename>							# pulls a repo + calls it '<remotename>/master' instead of the default 'origin/master'
-git push <remotename> <branchname> 								# pushes checkedout branch to remote/branch (or creates remote/branch if it doesn't exist) 
-git branch -u <remotename>/<branchname> 						# current branch to track remote/branch # switch -u for --unset-upstream to undo
-git switch -c <branchname> --track <remotename>/<branchname>  	# creates + switches to local <branchname> that tracks <remotename>/<branchname>
-git pull <remotename> <branchname>								# pulls + merges from remote (better to use fetch/merge)
-git push -u <remotename> <newbranchname>			            # push <newbranchname> to <remotename>, -u sets up tracking, next you should delete <oldbranchname> from remote
-																WARNING: NEVER change the name of the main branch
-git push --delete <remotename> <oldbranchname> 					# delete <branchname> from remote (recoverable for a short time)
-or
-git push <remotename> --delete <branchname>
+git remote -v												# view your remotes and their URLs
+git remote show remotename									# display metadata of remotename
+git remote add remotename <ssh>								# using ssh key, adds a remote (to local list of remotes)
+git remote add remotename <url> 							# using https, adds a remote (to local list of remotes)
+git remote remove remotename                                # delete a remote (from local list of remotes)
+git branch -u remotename/branchname 						# current branch to track remote/branch (use --unset-upstream to undo
+git branch --unset-upstream remotename/branchname           # undo above
+git switch -c branchname --track remotename/branchname  	# creates + switches to local branchname that tracks remotename/branchname
+git fetch remotename                                        # gets metadata of remotename, updates tracking branches
+git fetch --all                                             # gets metadata of all tracked remotes, updates tracking branches
+git pull remotename branchname								# pulls + merges from remote (better to use fetch/merge)
+git push remotename branchname                              # pushes checkedout branch to remote/branch (or creates remote/branch if none exists)
 
-
+# Renaming (not tested these commands - don't like the idea - may screw with history) 
+WARNING: NEVER change the name of the MASTER/MAIN/DEFAULT branch --> will definetly screw with collaborators history
+git remote rename <old> <new>                               # renames a remote repo - easier on github
+git push -u remotename <newbranchname>                      # push <newbranchname> to remotename (-u sets up tracking)
+git push remotename --delete branchname                     # delete branchname from remote (recoverable for a short time)

@@ -1,0 +1,17 @@
+Github is the most popular host for remote GIT repos so you'll want to learn how to connect GitHub from your machine. Once you create a GitHub account, GitHub supports connection by HTTPS or SSH. HTTPS will require you to provide your username and password each time you connect. With SSH, you set up a trusted connection between your machine and GitHub so you provide your username and password on setup only.
+
+##################################
+# Setting up to connect with SSH #
+##################################
+
+1) Check if you already have an SSH key 
+
+https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys
+
+2) Generate a new SSH key and add it to the ssh-agent
+
+https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+
+3) Add your SSH key to your GitHub account
+
+https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account

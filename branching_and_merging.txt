@@ -52,7 +52,7 @@ This command pushes branchname to remote. The '-u' flag tells git to associate l
 
 # Remember: Always check the remote for new commits before pushing anything
 git switch branchname
-git pull origin branchname
+git pull origin branchname 			# or fetch/merge
 
 # Next, while switched to master, merge any branches not merged with master
 git branch --no-merged										# view branches not merged with current branch
