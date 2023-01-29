@@ -20,8 +20,6 @@ mkdir projectname_repo 						# if new directory
 	(or mv projectname/ projectname_repo	# if existing directory)
 cd projectname_repo
 git init 												# creates .git folder
-git add .		 										# stages new files
-git commit -m 'Initial project version' 				# commit staged files
 git status -v 											# view status of the repo
 
 ######################
