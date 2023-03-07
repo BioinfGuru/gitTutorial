@@ -11,14 +11,8 @@ So before you go any further, lets set up a simple hidden file that tells GIT th
 
 cd projectname_repo
 touch .gitignore
-echo -e "# ignore all log files\n*.log\n" > .gitignore
-cat .gitignore
-
-So that is the file created, and now GIT will ignore all log files. 
-As you gain experience, you will add more. For guidance and common additions to .gitignore see:
-
-https://www.atlassian.com/git/tutorials/saving-changes/gitignore
-https://www.toptal.com/developers/gitignore
+nano .gitignore
+Paste the following into .gitignore, then save and exit
 
 #######################
 # My .gitignore file: #
