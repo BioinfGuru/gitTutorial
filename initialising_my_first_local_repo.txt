@@ -29,4 +29,5 @@ cd projectname_repo
 du -hs .git 			# view .git folder disk usage
 tree .git 				# view .git folder contents as a tree
 
-Now notice the tree structure and files inside the .git folder, and how little storage it uses! This is the working brain of git. It stores all the info for tracking and version control. If you ever want to stop using GIT for this project, you just have to delete the .git folder.
+Now notice the tree structure and files inside the .git folder, and how little storage it uses! This is the working brain of git. It stores all the info for tracking and version control.
+If you ever want to stop using GIT for this project, you just have to delete the .git folder.
