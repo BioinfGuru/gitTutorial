@@ -1,0 +1,25 @@
+# Quick start: Add a local repo to github
+ (see: https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git)
+
+Log in to git hub
+Create a new repository at https://github.com/new
+	# Enter & Copy repository name
+	# Don't add README, .gitignore, or public license yet
+	# NB: Creates 'main' branch (see: https://github.com/github/renaming)
+Open terminal
+mkdir [repositoryname_repo] && cd [repository name_repo]
+git init
+git status -v 									# check default branch name i.e. new repos should be named 'main' not 'master'
+If default branch name is master:
+	git branch -m master main						# change default branch name to 'main'
+	git config --global init.defaultBranch main 	# set global variable to name future new default branches to main, instead of master
+Add files to repositoryname_repo
+git add .
+git commit -m 'initial commit'
+Go to github repo --> green 'code' tab --> copy SSH-URL
+git remote add origin SSH-URL
+git remote -v
+git push --set-upstream origin main 			# Needed only for first push
+git pull 										# should return 'already up-to-date'
+git push										# should return 'everything up-to-date'
+

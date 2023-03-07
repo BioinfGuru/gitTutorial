@@ -19,8 +19,11 @@ To get started, we will initialize a local repo but later in remotes.txt you wil
 mkdir projectname_repo 						# if new directory
 	(or mv projectname/ projectname_repo	# if existing directory)
 cd projectname_repo
-git init 												# creates .git folder
-git status -v 											# view status of the repo
+git init 									# creates .git folder
+git status -v 								# view status of the repo & check default branch name i.e (all new repos should be main, not master)
+If default branch name is master:
+	git branch -m master main						# change default branch name to 'main'
+	git config --global init.defaultBranch main 	# set global variable to name future new default branches to main, instead of master
 
 ######################
 # Take a look inside #
