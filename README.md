@@ -1,12 +1,15 @@
 ## GETTING STARTED WITH GIT
 
-GIT is a distributed version system that creates a repository (repo) in your project folder, allowing you to monitor (track) changes to your project during development, and allows you to try multiple, simoultaneous development lines or roll-back unwanted changes. Conceptually, GIT allows storage of an online canonical copy that others can access, while also having a local copy on your machine for development. Local changes can then be uploaded (pushed) to the online canonical copy (like an update or bugfix). Alternatively, you don't have to put any repo online, GIT will still track the development of your project.
+GIT is a distributed version system that creates a repository (repo) in your project folder. 
+This allows you to monitor (track) changes to your project during development, and to try multiple, simoultaneous development lines or roll-back unwanted changes. 
+Conceptually, GIT allows storage of an online canonical copy that others can access, while also having a local copy on your machine for development.
+Local changes can then be uploaded (pushed) to the online canonical copy (like an update or bugfix).
+Alternatively, you don't have to put any repo online, GIT will still track the development of your project.
 
-Important: 
-The default branch for new repos initialised on Github are now called 'main' instead of 'master'
-See [Main (new) v Master (old)](https://github.com/github/renaming)
-
-
+Important:
+- The default branch for new repos initialised on Github are now called 'main' instead of 'master'. 
+- In the following tutorials, 'master' is synonymous with 'main'
+- See [Main (new) v Master (old)](https://github.com/github/renaming)
 
 Follow these walkthroughs to start your GIT journey:
 * 1 	- [Install and setup GIT](https://github.com/BioinfGuru/gitTutorial/blob/master/Install_and_setup.txt)
