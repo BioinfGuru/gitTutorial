@@ -1,4 +1,7 @@
-Github is the most popular host for remote GIT repos so you'll want to learn how to connect GitHub from your machine. Once you create a GitHub account, GitHub supports connection by HTTPS or SSH. HTTPS will require you to provide your username and password each time you connect. With SSH, you set up a trusted connection between your machine and GitHub so you provide your username and password on setup only.
+Github is the most popular host for remote GIT repos so you'll want to learn how to connect GitHub from your machine.
+Once you create a GitHub account, GitHub supports connection by HTTPS or SSH.
+HTTPS will require you to provide your username and password each time you connect.
+With SSH, you set up a trusted connection between your machine and GitHub so you provide your username and password on setup only.
 
 ##################################
 # Setting up to connect with SSH #

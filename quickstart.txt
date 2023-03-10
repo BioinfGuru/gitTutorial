@@ -21,5 +21,3 @@ git pull 										# should return 'already up-to-date'
 git push										# should return 'everything up-to-date'
 
 For further info: see: https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git)
-
-

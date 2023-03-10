@@ -1,4 +1,7 @@
-From experience, you will probably know it is entirly possibly to screw up your code and have no idea how to unscrew it. This is the power of GIT. Branching allows you to switch to a branch (copy) of your project, while retaining the MASTER branch. This allows you to develop a new feature or fix without messing up the master branch. Best practice encourages short lived branches with small changes that are quickly merged back to the master branch. For more detail:
+From experience, you will probably know it is entirly possibly to screw up your code and have no idea how to unscrew it. 
+This is the power of GIT. Branching allows you to switch to a branch (copy) of your project, while retaining the MASTER branch. 
+This allows you to develop a new feature or fix without messing up the master branch. 
+Best practice encourages short lived branches with small changes that are quickly merged back to the master branch. For more detail:
 
 REMEMBER: 	
 			- Don't give branches and folders the same name
@@ -36,7 +39,9 @@ cat test.txt
 git switch -	# return to previous branch
 cat test.txt
 
-So now you have created a branch, modified a file, and committed the modification. Then when you switched between branches, each branch conserves the files in the state they were in when that branch was last commited. It is like turning back the clock!
+So now you have created a branch, modified a file, and committed the modification. 
+Then when you switched between branches, each branch conserves the files in the state they were in when that branch was last commited. 
+It is like turning back the clock!
 
 ####################
 # Pushing branches #
@@ -44,7 +49,8 @@ So now you have created a branch, modified a file, and committed the modificatio
 
 git push -u origin branchname 					
 
-This command pushes branchname to remote. The '-u' flag tells git to associate local branch with remote branch (i.e. for tracking) so that 'git pull' will pull all branches and not just MASTER
+This command pushes branchname to remote. 
+The '-u' flag tells git to associate local branch with remote branch (i.e. for tracking) so that 'git pull' will pull all branches and not just MASTER
 
 ####################
 # Merging a branch #
@@ -70,7 +76,10 @@ git push origin --delete branchname
 # Stashing branch modifications #
 #################################
 
-Sometimes you may be making some modifications and are not ready to commit them but you need to switch branches or temporarily go back to where you started. Git allows you to temporarily store the modifications for you to retrieve later, returning the branch to the last commit before the modifications, so you can go do whatever it is you needed to do. Remember: When retrieving the stash, make sure you are back on the branch you stashed from
+Sometimes you may be making some modifications and are not ready to commit them but you need to switch branches or temporarily go back to where you started. 
+Git allows you to temporarily store the modifications for you to retrieve later.
+Then you return the branch to the last commit before the modifications, so you can go do whatever it is you needed to do. 
+Remember: When retrieving the stash, make sure you are back on the branch you stashed from
 
 
 git stash save "leave a detailed informative message" # creates a stash

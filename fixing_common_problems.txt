@@ -1,4 +1,8 @@
-There are a few ways to undo a mistake in your GIT repository. Some commands change the commit history (e.g. ammend, reset), which is fine if the repository is only accessed by you, but if other people are pushing to/pulling from the same remote repository it can corrupt their history, so it is best to use git revert instead (see below).
+There are a few ways to undo a mistake in your GIT repository.
+Some commands change the commit history (e.g. ammend, reset).
+This is fine if the repository is only accessed by you.
+But if other people are pushing to/pulling from the same remote repository it can corrupt their history.
+So it is best to use git revert instead (see below).
 
 Remember the process: Modify (working directory) --> Stage (staging area) --> Commit (saved in .git repo) --> Merge (optional)
 
@@ -53,7 +57,8 @@ git clean -df	# optional, deletes untracked directories/files
 ##############################
 # Need to undo a hard reset? #
 ##############################
-Solution: Needs to be done as soon as possible before garbage deletion (git-gc) runs which makes the hard reset unrecoverable. Use reflog to list commit hashes ordered by git command. Restore the commit and save it as a new branch.
+Solution: Needs to be done as soon as possible before garbage deletion (git-gc) runs which makes the hard reset unrecoverable.
+Use reflog to list commit hashes ordered by git command. Restore the commit and save it as a new branch.
 
 git reflog
 copy the hash before the reset
@@ -63,7 +68,8 @@ git branch newbranchname 			# creates a branch for the restored commit
 ###############################################################
 # Need to amend/reset but don't want to affect commit history #
 ###############################################################
-Solution: Use revert to create a new commit that reverses the affect of a specified earlier commit. No modifications to earlier commits, so history is protected.
+Solution: Use revert to create a new commit that reverses the affect of a specified earlier commit.
+No modifications to earlier commits, so history is protected.
 
 git log
 copy and paste the hash of the commit you want to be reversed

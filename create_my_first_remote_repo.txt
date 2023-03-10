@@ -1,4 +1,7 @@
-Earlier you learned how to initialize a new repo locally on your machine, but what about the other scenario of cloning (downloading) a remote repository (online copy of a project) to your machine? This gives a local copy of the repo on your machine that is ready for development, under version control, and tracked. Once you have modified, staged, and committed any changes to files, you can then upload (push)to the remote repo.
+Earlier you learned how to initialize a new repo locally on your machine.
+But what about the other scenario of cloning (downloading) a remote repository (online copy of a project) to your machine? 
+This gives a local copy of the repo on your machine that is ready for development, under version control, and tracked. 
+Once you have modified, staged, and committed any changes to files, you can then upload (push)to the remote repo.
 
 ##########################
 # Cloning a remote repo #
@@ -26,7 +29,10 @@ git remote -v       # To confirm remote created
 # Push to a remote repo #
 #########################
 Important:
- - It is likely that if this is a collaborative project, that others will have pushed to the remote since you have cloned it. So you should first pull (or fetch/merge) from the repository again so that all changes can be merged and conflicts resolved before pushing back to the repository again. Otherwise, your push may be rejected.
+ - It is likely that if this is a collaborative project, others will have pushed to the remote since you have cloned it. 
+ - So you should first pull (or fetch/merge) from the repository again.
+ - All changes can then be merged and conflicts resolved before pushing back to the repository again.
+ - Otherwise, your push may be rejected.
  - ORIGIN/MASTER is just the default remotename/branchname given by 'git init' (don't change them, everyone understands them)
 
 git pull remotename branchname                              # or use fetch/merge (see below)

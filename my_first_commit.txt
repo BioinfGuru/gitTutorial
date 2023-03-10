@@ -8,7 +8,10 @@ Under-the-hood, GIT tracks 3 things. These are:
 ##########
 # STATUS #
 ##########
-So now you have some files and you have been busy and modified, closed and saved the files. Next you need to let GIT know that it is time to update the repo. You do this by adding the modified files to the staging area and then committing the modifications to the repo. But first lets take a look at one of the most common commands you will use
+So now you have some files and you have been busy and modified, closed and saved the files.
+Next you need to let GIT know that it is time to update the repo.
+You do this by adding the modified files to the staging area and then committing the modifications to the repo.
+But first lets take a look at one of the most common commands you will use
 
 git status -s
 
