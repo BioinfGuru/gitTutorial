@@ -23,5 +23,20 @@ Follow these walkthroughs to start your GIT journey:
 * 9 	- [Fixing common problems](https://github.com/BioinfGuru/gitTutorial/blob/master/fixing_common_problems.txt)
 * 10 	- [Quick Start Guide](https://github.com/BioinfGuru/gitTutorial/blob/master/quickstart.txt)
 
+Credit for this goes to the creators of the many tutorials out there:
+
+- [Youtube: githubguides](https://www.youtube.com/githubguides)
+- [Youtube: Cory Schafer](https://www.youtube.com/playlist?list=PL-osiE80TeTuRUfjRe54Eea17-YfnOOAx)
+- [Youtube: Playlist](https://www.youtube.com/playlist?list=PLX8DhkeGk84NppGIycv6v7MnzKeF6YFrS)
+- [Github docs](https://docs.github.com/en)
+- [Github support](https://support.github.com/)
+- [The book!](https://git-scm.com/book/en/v2)
+
+
+
+
+
+
+
 For more detail on the basics of GIT: ["Getting started in the command line"](https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line)
 
