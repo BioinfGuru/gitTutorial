@@ -1,6 +1,3 @@
-# Quick start: Add a local repo to github
- (see: https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git)
-
 Log in to git hub
 Create a new repository at https://github.com/new
 	# Enter & Copy repository name
@@ -22,4 +19,7 @@ git remote -v
 git push --set-upstream origin main 			# Needed only for first push
 git pull 										# should return 'already up-to-date'
 git push										# should return 'everything up-to-date'
+
+For further info: see: https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git)
+
 

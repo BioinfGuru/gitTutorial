@@ -31,7 +31,7 @@ REMEMBER: after making modifications, close all files before staging and commiti
 git status -s								# notice new files are untracked and modified files are unstaged
 git add .									# stages all new or modified files only + ignores deleted files. (NB: don't use '*')
 											# if relocating a file, git status should output 'R oldlocation/file -> newlocation/file'
-got status -s	 							# notice new/modified files are now ready (staged and tracked) to be committed
+git status -s	 							# notice new/modified files are now ready (staged and tracked) to be committed
 
 # Now the files have been staged, they can be commited (but check status first so you know what you are commiting)
 git commit -m 'meaningful description'		# Add an informative verbose 'meaningful description' of the modifications to be committed
