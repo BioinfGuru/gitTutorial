@@ -6,6 +6,8 @@ Important:
 The default branch for new repos initialised on Github are now called 'main' instead of 'master'
 See [Main (new) v Master (old)](https://github.com/github/renaming)
 
+
+
 Follow these walkthroughs to start your GIT journey:
 * 1 	- [Install and setup GIT](https://github.com/BioinfGuru/gitTutorial/blob/master/Install_and_setup.txt)
 * 2 	- [Connect to GitHub](https://github.com/BioinfGuru/gitTutorial/blob/master/connecting_to_github.txt)
@@ -19,3 +21,4 @@ Follow these walkthroughs to start your GIT journey:
 * 10 	- [Quick Start Guide](https://github.com/BioinfGuru/gitTutorial/blob/master/quickstart.txt)
 
 For more detail on the basics of GIT: ["Getting started in the command line"](https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line)
+
