@@ -14,10 +14,10 @@ Important:
 Follow these walkthroughs to start your GIT journey:
 * 1 	- [Install and setup GIT](https://github.com/BioinfGuru/gitTutorial/blob/master/Install_and_setup.txt)
 * 2 	- [Connect to GitHub](https://github.com/BioinfGuru/gitTutorial/blob/master/connecting_to_github.txt)
-* 3 	- [Create your first local repository](https://github.com/BioinfGuru/gitTutorial/blob/master/initialising_my_first_local_repo.txt)
+* 3 	- [Create your first local repository](https://github.com/BioinfGuru/gitTutorial/blob/master/create_my_first_local_repo.txt)
 * 4 	- [Create a gitignore file](https://github.com/BioinfGuru/gitTutorial/blob/master/create_gitignore.txt)
 * 5 	- [Make your first commit](https://github.com/BioinfGuru/gitTutorial/blob/master/my_first_commit.txt)
-* 6 	- [Clone your first remote repository](https://github.com/BioinfGuru/gitTutorial/blob/master/cloning_my_first_remote_repo.txt)
+* 6 	- [Create your first remote repository](https://github.com/BioinfGuru/gitTutorial/blob/master/create_my_first_remote_repo.txt)
 * 7 	- [Branching & Merging](https://github.com/BioinfGuru/gitTutorial/blob/master/branching_and_merging.txt)
 * 8 	- [Merge conflicts](https://github.com/BioinfGuru/gitTutorial/blob/master/merge_conflicts.txt)
 * 9 	- [Fixing common problems](https://github.com/BioinfGuru/gitTutorial/blob/master/fixing_common_problems.txt)
