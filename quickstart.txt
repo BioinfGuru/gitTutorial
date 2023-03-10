@@ -4,7 +4,7 @@ Create a new repository at https://github.com/new
 	# Don't add README, .gitignore, or public license yet
 	# NB: Creates 'main' branch (see: https://github.com/github/renaming)
 Open terminal
-mkdir [repositoryname_repo] && cd [repository name_repo]
+mkdir [repositoryname_repo] && cd [repository name_repo]	# I personally add '_repo' so I don't forget which folders are under git version control 
 git init
 git status -v 									# check default branch name i.e. new repos should be named 'main' not 'master'
 If default branch name is master:
