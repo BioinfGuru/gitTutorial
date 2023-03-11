@@ -9,9 +9,11 @@ Remember the process: Modify (working directory) --> Stage (staging area) --> Co
 ###############################################
 # Need to undo unstaged/staged modifications? #
 ###############################################
-Solution: Switch to another branch, and forcibly remove the modifications since last commit.
-
+Solution 1: Switch to another branch, and forcibly remove the modifications since last commit.
 git switch --force branchname
+
+Solution 2: Hard reset to remove all modifications since last commit
+git reset --hard
  
 ##########################################################
 # Need to move unstaged modifications to another branch? #
