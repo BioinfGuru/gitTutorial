@@ -1,6 +1,6 @@
 ## GETTING STARTED WITH GIT
 
-GIT is a distributed version system that creates a repository (repo) in your project folder. 
+GIT is a distributed version control system that creates a repository (repo) in your project folder. 
 This allows you to monitor (track) changes to your project during development, and to try multiple, simoultaneous development lines or roll-back unwanted changes. 
 Conceptually, GIT allows storage of an online canonical copy that others can access, while also having a local copy on your machine for development.
 Local changes can then be uploaded (pushed) to the online canonical copy (like an update or bugfix).
