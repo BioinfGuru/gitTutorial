@@ -96,16 +96,18 @@ git stash drop clear			# delete (forever) all stashes in the stash list
 ######################
 # Cleaning your repo #
 ######################
-Try to keep your repository free from clutter by deleting untracked and ignored files/directories.
-See: https://travisjeffery.com/b/2011/12/keeping-your-git-repo-clean-of-orig-files/
-	https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-to-use-the-git-clean-command
-	https://panjeh.medium.com/cleaning-up-git-github-repository-without-deleting-git-directory-c86b7415b51b
+Try to keep your repository free from clutter
+'$git clean' does this by by deleting untracked and ignored files/directories
+But... it DELETES UNTRACKED AND IGNORED FILES/DIRECTORIES! If you have stuff you need, they'll get deleted! (Been there... Aagggh!)
+See:	https://travisjeffery.com/b/2011/12/keeping-your-git-repo-clean-of-orig-files/
+		https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-to-use-the-git-clean-command
+		https://panjeh.medium.com/cleaning-up-git-github-repository-without-deleting-git-directory-c86b7415b51b
 
-git clean -n 			# dry run, tells you what will be deleted
-git clean -f 			# force, deletes untracked files
-git clean -d 			# deletes untracked directories
-git clean -x			# deletes ignored files
-git clean -fdx			# deletes all untracked files/directories and ignored files
+git clean -n 			# ALWAYS FIRST! dry run, tells you what will be deleted
+git clean -f 			# CAREFUL! force, deletes untracked files
+git clean -d 			# CAREFUL! deletes untracked directories
+git clean -x			# CAREFUL! deletes ignored files
+git clean -fdx			# CAREFUL! deletes all untracked files/directories and ignored files
 
 ###########################
 # Other relevent commands #

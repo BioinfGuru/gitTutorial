@@ -54,7 +54,8 @@ Hard 			- deletes the specified commit, deletes all tracked file modifications s
 git log 
 copy first 6 characters of hash of the commit you want to reset to
 git reset --[soft|mixed|hard] paste_hash_here
-git clean -df	# optional, deletes untracked directories/files
+git clean -n	# view files you'll delete with git clean
+git clean -fdx	# CAREFUL! deletes ignored files, and untracked directories/files - 
 
 ##############################
 # Need to undo a hard reset? #
